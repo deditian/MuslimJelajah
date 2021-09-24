@@ -1,0 +1,46 @@
+{
+  "menu":[
+      {
+        "title": "title0",
+        "type" : 0,
+        "item": [
+          {
+            "type" : 1,
+            "image_menu": "pic_1.jpg",
+            "title_menu": "Jadwal Sholat"
+          },
+          {
+            "type" : 1,
+            "image_menu": "pic_2.jpg",
+            "title_menu": "Kiblat"
+          },
+          {
+            "type" : 1,
+            "image_menu": "pic_1.jpg",
+            "title_menu": "Jadwal Sholat"
+          },
+          {
+            "type" : 1,
+            "image_menu": "pic_2.jpg",
+            "title_menu": "Kiblat"
+          }
+        ]
+      },
+      {
+        "title" : "title1",
+        "type" : 0,
+        "item": [
+          {
+            "type" : 1,
+            "image_menu": "pic_1.jpg",
+            "title_menu": "Jadwal Sholat"
+          },
+          {
+            "type" : 1,
+            "image_menu": "pic_2.jpg",
+            "title_menu": "Kiblat"
+          }
+        ]
+      }
+  ]
+}

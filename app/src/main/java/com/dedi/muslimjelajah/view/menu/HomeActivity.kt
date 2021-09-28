@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.dedi.muslimjelajah.databinding.HomeLayoutBinding
 import com.dedi.muslimjelajah.model.MenuItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -27,7 +30,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding  = HomeLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        menuRecyclerView = MenuAdapter(this)
         val mLayoutManager = GridLayoutManager(this, 5)
         mLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
@@ -43,7 +45,6 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.getMenuPagesLiveData().observe(this@HomeActivity, menuObserver)
 
-
     }
 
     //observers
@@ -54,5 +55,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
 
 }

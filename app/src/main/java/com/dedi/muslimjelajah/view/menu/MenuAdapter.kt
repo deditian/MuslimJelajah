@@ -2,9 +2,7 @@ package com.dedi.muslimjelajah.view.menu
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dedi.muslimjelajah.databinding.HeaderLayoutBinding
@@ -57,7 +55,6 @@ class MenuAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
     }
 
     fun setList(menuItem: List<MenuItem>) {
-        _menusList.clear()
         _menusList.addAll(menuItem)
         notifyDataSetChanged()
     }

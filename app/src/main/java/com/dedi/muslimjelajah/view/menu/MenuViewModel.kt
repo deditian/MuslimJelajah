@@ -11,21 +11,21 @@ import kotlinx.coroutines.launch
 
 class MenuViewModel(private val repository : MenuRepository) : ViewModel() {
 
-    private var menusLocalMutableLiveData = MutableLiveData<MutableList<MenuItem>>()
-    val menusLocalLiveData: LiveData<MutableList<MenuItem>> = menusLocalMutableLiveData
+    private var menusLocalMutableLiveData = MutableLiveData<List<MenuItem>>()
+//    val menusLocalLiveData: LiveData<MutableList<MenuItem>> get() = menusLocalMutableLiveData
 
-    fun getMenuPages() = viewModelScope.launch {
-//        val menus = MutableLiveData<MutableList<MenuItem>>(MenuItem.getMenus())
+    init {
+        getMenuPages()
+    }
+
+    private fun getMenuPages() = viewModelScope.launch {
         val result = repository.giveMenu()
-
-//        val itemPage = repository.giveItem()
         Log.e("TAG", "getMenuPages: viewmodel $result " )
-//        Log.e("TAG", "getITEMPages: viewmodel $itemPage " )
         menusLocalMutableLiveData.postValue(result)
     }
 
-    fun getItem(){
-
+    fun getMenuPagesLiveData(): LiveData<List<MenuItem>> {   // Simple getter
+        return menusLocalMutableLiveData
     }
 
 }

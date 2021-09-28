@@ -2,19 +2,12 @@ package com.dedi.muslimjelajah.view.menu
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.dedi.muslimjelajah.R
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.dedi.muslimjelajah.databinding.HomeLayoutBinding
 import com.dedi.muslimjelajah.model.MenuItem
-import com.dedi.muslimjelajah.model.MenuPage
-import java.io.IOException
-import java.nio.charset.Charset
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -27,7 +20,6 @@ class HomeActivity : AppCompatActivity() {
     private val menuRecyclerView: MenuAdapter by lazy {
         MenuAdapter(this)
     }
-
     private lateinit var binding: HomeLayoutBinding
 
 
@@ -35,22 +27,32 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding  = HomeLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        binding.recyclerView.layoutManager = GridLayoutManager(this,  5)
-        binding.recyclerView.layoutManager =  LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
-
-        getMenus()
-        viewModel.menusLocalLiveData.observe(this, menuObserver)
+//        menuRecyclerView = MenuAdapter(this)
+        val mLayoutManager = GridLayoutManager(this, 5)
+        mLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when (menuRecyclerView.getItemViewType(position)) {
+                    MenuAdapter.ITEM_HEADER -> 5
+                    MenuAdapter.ITEM_MENU -> 1
+                    else -> 1
+                }
+            }
+        }
+        binding.recyclerView.layoutManager = mLayoutManager
         binding.recyclerView.adapter = menuRecyclerView
+
+        viewModel.getMenuPagesLiveData().observe(this@HomeActivity, menuObserver)
+
 
     }
 
     //observers
-    private val menuObserver = Observer<MutableList<MenuItem>> {
+    private val menuObserver = Observer<List<MenuItem>> {
         Log.e(TAG, "menuObserver : $it")
-        menuRecyclerView.setList(it)
+        if (it != null){
+            menuRecyclerView.setList(it)
+        }
+
     }
 
-    private fun getMenus(){
-        viewModel.getMenuPages()
-    }
 }

@@ -11,4 +11,12 @@
         android:layout_alignParentTop="true"
         android:overScrollMode="never"/>
 
+    <include
+        android:id="@+id/layout_network"
+        layout="@layout/item_handle_network"
+        android:layout_margin="12dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

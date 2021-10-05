@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dedi.muslimjelajah">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".di.MyApp"
         android:allowBackup="true"
@@ -10,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MuslimJelajah">
-        <activity android:name="com.dedi.muslimjelajah.view.prayerschedule.PrayerSchedule"></activity>
-        <activity android:name=".view.menu.HomeActivity">
+        <activity android:name=".view.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

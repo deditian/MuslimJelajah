@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/purple_200"
-    tools:context=".view.menu.HomeActivity">
+    tools:context=".view.home.HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
@@ -83,7 +83,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/layout_bg"
@@ -92,58 +93,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/main_graph"
+            tools:ignore="MissingConstraints" />
 
-        <View
-            android:id="@+id/viewLine"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_alignBottom="@+id/recyclerView"
-            android:background="#c0c0c0" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/viewLine"
-            android:orientation="horizontal"
-           >
-
-            <TextView
-                style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Kajian Terbaru"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20dp"
-                android:text="lihat semua"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+            app:menu="@menu/bottom_navigation_menu"
+            tools:ignore="MissingConstraints" />
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

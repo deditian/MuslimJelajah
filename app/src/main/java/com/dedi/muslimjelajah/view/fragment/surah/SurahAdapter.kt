@@ -1,6 +1,5 @@
 package com.dedi.muslimjelajah.view.fragment.surah
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,7 @@ import com.dedi.muslimjelajah.databinding.ItemSurahBinding
 import com.dedi.muslimjelajah.domain.entity.Surah
 
 
-class SurahAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SurahAdapter(private val onAyahClick: (Surah) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var _surahList : MutableList<Surah> = mutableListOf()
     private val surahList: List<Surah>
@@ -21,7 +20,6 @@ class SurahAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        Log.e("TAG", "onBindViewHolder:surahList[position] ${surahList[position]}", )
         (holder as SurahViewHolder).bind(surahList[position])
     }
 
@@ -33,17 +31,16 @@ class SurahAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         _surahList.clear()
         _surahList.addAll(surahItem)
         notifyDataSetChanged()
-        Log.e("TAG", "setListnya: $_surahList", )
     }
 
     private fun SurahViewHolder.bind(surahItem: Surah) {
-        Log.i("TAG", "bind: SurahAdapter ${surahItem.arti}")
         binding.run {
             txtAsma.text = surahItem.asma
             txtAyat.text = surahItem.ayat
             txtNama.text = surahItem.nama
             txtNumber.text = surahItem.nomor
             txtType.text = surahItem.type
+            itemContainer.setOnClickListener { onAyahClick(surahItem)  }
         }
 
     }

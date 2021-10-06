@@ -2,8 +2,6 @@ package com.dedi.muslimjelajah.view.fragment.surah
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.dedi.muslimjelajah.model.ItemPage
-import com.dedi.muslimjelajah.model.MenuItem
 import com.dedi.muslimjelajah.repository.MuslimRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
@@ -17,6 +15,7 @@ class SurahViewModel @Inject constructor(private val repository : MuslimReposito
 
 
     val surah = repository.surah.asLiveData(viewModelScope.coroutineContext)
+
 
     fun getSurah() = viewModelScope.launch { repository.getSurah() }
 

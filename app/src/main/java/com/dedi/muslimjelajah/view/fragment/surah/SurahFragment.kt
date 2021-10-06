@@ -1,5 +1,6 @@
 package com.dedi.muslimjelajah.view.fragment.surah
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,13 +15,14 @@ import com.dedi.muslimjelajah.domain.ResultState
 import com.dedi.muslimjelajah.domain.entity.Surah
 import com.dedi.muslimjelajah.utils.onFailure
 import com.dedi.muslimjelajah.utils.onSuccess
+import com.dedi.muslimjelajah.view.activity.ayah.AyahActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SurahFragment : Fragment(R.layout.fragment_surah) {
 
     private val viewModel: SurahViewModel by activityViewModels()
-    private val surahAdapter = SurahAdapter()
+    private lateinit var surahAdapter : SurahAdapter
     private val binding : FragmentSurahBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +31,7 @@ class SurahFragment : Fragment(R.layout.fragment_surah) {
     }
 
     private fun onView() = binding.run {
+        surahAdapter = SurahAdapter { toAyahFragment(it)}
 
         recyclerViewSurah.apply {
             layoutManager = LinearLayoutManager(context)
@@ -46,6 +49,13 @@ class SurahFragment : Fragment(R.layout.fragment_surah) {
 
         }
 
+    }
+
+    private fun toAyahFragment(data: Surah) {
+        val intent = Intent(context, AyahActivity::class.java)
+        intent.putExtra("nomor", data.nomor)
+        intent.putExtra("keterangan", data.keterangan)
+        startActivity(intent)
     }
 
     private fun FragmentSurahBinding.networkUI(result: ResultState<List<Surah>>) = layoutNetwork.run {

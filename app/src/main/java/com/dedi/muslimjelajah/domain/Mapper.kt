@@ -1,6 +1,7 @@
 package com.dedi.muslimjelajah.domain
 
 import com.dedi.muslimjelajah.data.entity.SurahResponse
+import com.dedi.muslimjelajah.domain.entity.Ayah
 import com.dedi.muslimjelajah.domain.entity.Surah
 import com.dedi.muslimjelajah.utils.onSuccess
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -10,6 +11,10 @@ object Mapper {
 
     fun mapApiToEntity(item: Surah): Surah {
         return Surah(item.arti, item.asma,item.ayat,item.nama, item.type,item.urut, item.audio,item.nomor, item.rukuk,item.keterangan)
+    }
+
+    fun mapApiToEntity(item: Ayah): Ayah {
+        return Ayah(item.ar,item.id,item.tr,item.nomor)
     }
 
 //    suspend inline fun <T : Any> mapResultToData(resultState: ResultState<T>): ResultState<T>? =

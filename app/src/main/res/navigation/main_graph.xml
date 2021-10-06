@@ -11,10 +11,12 @@
         android:name="com.dedi.muslimjelajah.view.fragment.surah.SurahFragment"
         android:label="SurahFragment"
         tools:layout="@layout/fragment_surah" />
-    <fragment
-        android:id="@+id/juzFragment"
-        android:name="com.dedi.muslimjelajah.JuzFragment"
-        android:label="fragment_juz2"
-        tools:layout="@layout/fragment_juz" />
+
+    
+<!--    <fragment-->
+<!--        android:id="@+id/juzFragment"-->
+<!--        android:name="com.dedi.muslimjelajah.JuzFragment"-->
+<!--        android:label="fragment_juz2"-->
+<!--        tools:layout="@layout/fragment_juz" />-->
 
 </navigation>

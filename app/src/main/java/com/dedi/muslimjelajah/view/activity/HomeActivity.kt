@@ -1,6 +1,7 @@
-package com.dedi.muslimjelajah.view.home
+package com.dedi.muslimjelajah.view.activity
 
 import android.os.Bundle
+import android.viewbinding.library.activity.viewBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -14,15 +15,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
-    private lateinit var binding: HomeLayoutBinding
+    private val binding: HomeLayoutBinding by viewBinding()
 
     private val viewModel: SurahViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding  = HomeLayoutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         onView()
 
 

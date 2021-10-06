@@ -5,13 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.viewbinding.library.fragment.viewBinding
+import android.widget.SimpleAdapter
 import com.dedi.muslimjelajah.R
+import com.dedi.muslimjelajah.databinding.FragmentJuzBinding
 
 class JuzFragment : Fragment(R.layout.fragment_juz) {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_juz, container, false)
+    private val binding : FragmentJuzBinding by viewBinding()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onView()
+    }
+
+    private fun onView() = binding.run{
+        textView3.text = "asd"
     }
 }

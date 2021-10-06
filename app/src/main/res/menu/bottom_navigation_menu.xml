@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/surah"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/surah"/>
+        android:title="@string/surah"
+        android:iconTint="@color/purple_200"
+        tools:ignore="UnusedAttribute"/>
+
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/juz"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/juz"/>
+        android:title="@string/juz"
+        android:iconTint="@color/purple_200"
+        tools:ignore="UnusedAttribute"/>
 </menu>

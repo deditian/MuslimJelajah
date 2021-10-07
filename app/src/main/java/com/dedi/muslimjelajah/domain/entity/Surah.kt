@@ -1,8 +1,11 @@
 package com.dedi.muslimjelajah.domain.entity
 
-import com.google.gson.annotations.SerializedName
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-data class Surah(
+
+@Parcelize
+data class Surah (
     val arti: String,
     val asma: String,
     val ayat: String,
@@ -13,4 +16,6 @@ data class Surah(
     val nomor: String,
     val rukuk: String,
     val keterangan: String,
-)
+) : Parcelable
+
+

@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
 
+const val DATA_SURAH  = "MY_DATA"
+
 suspend fun <T: Any> fetch(call: suspend () -> T): Flow<ResultState<T>> = flow {
     emit(ResultState.Loading())
     try {

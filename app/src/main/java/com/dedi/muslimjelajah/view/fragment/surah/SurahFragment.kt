@@ -13,6 +13,7 @@ import com.dedi.muslimjelajah.R
 import com.dedi.muslimjelajah.databinding.FragmentSurahBinding
 import com.dedi.muslimjelajah.domain.ResultState
 import com.dedi.muslimjelajah.domain.entity.Surah
+import com.dedi.muslimjelajah.utils.DATA_SURAH
 import com.dedi.muslimjelajah.utils.onFailure
 import com.dedi.muslimjelajah.utils.onSuccess
 import com.dedi.muslimjelajah.view.activity.ayah.AyahActivity
@@ -43,7 +44,6 @@ class SurahFragment : Fragment(R.layout.fragment_surah) {
             networkUI(result)
 
             result.onSuccess { surah ->
-                Log.e("TAG", "onView: asd surah $result" )
                 surahAdapter.setList(surah)
             }
 
@@ -53,8 +53,7 @@ class SurahFragment : Fragment(R.layout.fragment_surah) {
 
     private fun toAyahFragment(data: Surah) {
         val intent = Intent(context, AyahActivity::class.java)
-        intent.putExtra("nomor", data.nomor)
-        intent.putExtra("keterangan", data.keterangan)
+        intent.putExtra(DATA_SURAH, data)
         startActivity(intent)
     }
 

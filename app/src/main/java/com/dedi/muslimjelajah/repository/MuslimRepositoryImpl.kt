@@ -33,7 +33,6 @@ class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDat
             }
         }.collect {
             _surah.value = it
-            Log.e("TAG", "getSurah: ${it}")
         }
     }
 
@@ -48,7 +47,6 @@ class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDat
             }
         }.collect {
             _ayah.value = it
-            Log.e("TAG", "getAyah: ${it}")
         }
     }
 

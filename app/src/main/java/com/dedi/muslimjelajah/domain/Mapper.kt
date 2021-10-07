@@ -17,18 +17,18 @@ object Mapper {
         return Ayah(item.ar,item.id,item.tr,item.nomor)
     }
 
-//    suspend inline fun <T : Any> mapResultToData(resultState: ResultState<T>): ResultState<T>? =
-//        suspendCancellableCoroutine { task ->
-//            resultState.onSuccess {
-//                val data = ResultState.Success(it)
-//                try {
-//                    task.resume(data)
-//                } catch (e: Throwable) {
-//                    e.printStackTrace()
-//                    task.resume(null)
-//                }
-//            }
-//        }
+    suspend inline fun <T : Any> mapResultToData(resultState: ResultState<T>): ResultState<T>? =
+        suspendCancellableCoroutine { task ->
+            resultState.onSuccess {
+                val data = ResultState.Success(it)
+                try {
+                    task.resume(data)
+                } catch (e: Throwable) {
+                    e.printStackTrace()
+                    task.resume(null)
+                }
+            }
+        }
 
     inline fun <T: Any, U: Any> mapResult(resultState: ResultState<out T>, mapper: T.() -> U): ResultState<U> {
         return when (resultState) {

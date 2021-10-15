@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 
 const val DATA_SURAH  = "MY_DATA"
 
-suspend fun <T: Any> fetch(call: suspend () -> T): Flow<ResultState<T>> = flow {
+suspend fun <T: Any> fetch( call: suspend () -> T): Flow<ResultState<T>> = flow {
     emit(ResultState.Loading())
     try {
         emit(ResultState.Success(data = call.invoke()))

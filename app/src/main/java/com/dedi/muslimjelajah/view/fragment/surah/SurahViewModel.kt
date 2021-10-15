@@ -1,20 +1,17 @@
 package com.dedi.muslimjelajah.view.fragment.surah
 
-import android.util.Log
 import androidx.lifecycle.*
-import com.dedi.muslimjelajah.repository.MuslimRepository
+import com.dedi.muslimjelajah.repository.networkdata.MuslimRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.json.JSONArray
-import org.json.JSONObject
 import javax.inject.Inject
 
 @HiltViewModel
 class SurahViewModel @Inject constructor(private val repository : MuslimRepository) : ViewModel() {
 
 
-    val surah = repository.surah.asLiveData(viewModelScope.coroutineContext)
+    val surah = repository.surah.asLiveData(viewModelScope.coroutineContext + Dispatchers.IO)
 
 
     fun getSurah() = viewModelScope.launch { repository.getSurah() }

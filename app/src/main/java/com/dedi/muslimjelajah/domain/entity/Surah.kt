@@ -1,10 +1,12 @@
 package com.dedi.muslimjelajah.domain.entity
 
 import android.os.Parcelable
+import androidx.room.Entity
 import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
+@Entity(tableName = "surah_table")
 data class Surah (
     val arti: String,
     val asma: String,

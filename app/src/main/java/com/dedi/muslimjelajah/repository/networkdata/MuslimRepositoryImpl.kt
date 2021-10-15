@@ -1,8 +1,7 @@
-package com.dedi.muslimjelajah.repository
+package com.dedi.muslimjelajah.repository.networkdata
 
-import android.util.Log
-import com.dedi.muslimjelajah.data.entity.SurahResponse
 import com.dedi.muslimjelajah.data.source.MuslimDataSource
+import com.dedi.muslimjelajah.db.dao.AppDao
 import com.dedi.muslimjelajah.domain.Mapper
 import com.dedi.muslimjelajah.domain.ResultState
 import com.dedi.muslimjelajah.domain.entity.Ayah
@@ -13,7 +12,7 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 
-class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDataSource) : MuslimRepository {
+class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDataSource, private val dao: AppDao) : MuslimRepository {
 
 
     private val _surah: MutableStateFlow<ResultState<List<Surah>>> = idle()
@@ -23,7 +22,7 @@ class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDat
     override val ayah: StateFlow<ResultState<List<Ayah>>> = _ayah
 
     override suspend fun getSurah() {
-        fetch {
+        fetch{
             dataSource.surah()
         }.map {
             Mapper.mapResult(it) {
@@ -33,11 +32,15 @@ class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDat
             }
         }.collect {
             _surah.value = it
+
         }
     }
 
     override suspend fun getAyah(nomor: Int) {
-        fetch {
+        fetch{
+//            dataSource.ayah(nomor)
+//            dao.insertAyahs(dataSource.ayah(nomor))
+//            dao.getAllAyahs()
             dataSource.ayah(nomor)
         }.map {
             Mapper.mapResult(it) {

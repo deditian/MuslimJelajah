@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
         NavigationUI.setupWithNavController(bottomNavigation, navHostFragment.navController)
 
-        viewModel.getSurah()
+//        viewModel.getSurah()
 
 
     }

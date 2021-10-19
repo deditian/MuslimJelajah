@@ -1,7 +1,6 @@
 package com.dedi.muslimjelajah.repository
 
-import android.util.Log
-import com.dedi.muslimjelajah.data.entity.SurahResponse
+import com.dedi.muslimjelajah.data.local.AppDao
 import com.dedi.muslimjelajah.data.source.MuslimDataSource
 import com.dedi.muslimjelajah.domain.Mapper
 import com.dedi.muslimjelajah.domain.ResultState
@@ -13,7 +12,10 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 
-class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDataSource) : MuslimRepository {
+class MuslimRepositoryImpl @Inject constructor(
+    private val dataSource: MuslimDataSource,
+    private val localDataSource: AppDao
+) : MuslimRepository {
 
 
     private val _surah: MutableStateFlow<ResultState<List<Surah>>> = idle()
@@ -24,10 +26,17 @@ class MuslimRepositoryImpl @Inject constructor(private val dataSource: MuslimDat
 
     override suspend fun getSurah() {
         fetch {
-            dataSource.surah()
+            val local = localDataSource.getAllSurah()
+            if (local.isNullOrEmpty()){
+                val surahSource = dataSource.surah()
+                localDataSource.insertAllSurah(surahSource.data)
+                localDataSource.getAllSurah()
+            }else{
+                localDataSource.getAllSurah()
+            }
         }.map {
             Mapper.mapResult(it) {
-                data.map { surah ->
+                map { surah ->
                     Mapper.mapApiToEntity(surah)
                 }
             }

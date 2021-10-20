@@ -8,8 +8,12 @@ import com.dedi.muslimjelajah.domain.entity.Ayah
 import com.dedi.muslimjelajah.domain.entity.Surah
 import com.dedi.muslimjelajah.utils.fetch
 import com.dedi.muslimjelajah.utils.idle
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 
 class MuslimRepositoryImpl @Inject constructor(
@@ -23,25 +27,29 @@ class MuslimRepositoryImpl @Inject constructor(
 
     override val surah: StateFlow<ResultState<List<Surah>>> = _surah
     override val ayah: StateFlow<ResultState<List<Ayah>>> = _ayah
+    private val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO
 
     override suspend fun getSurah() {
-        fetch {
-            val local = localDataSource.getAllSurah()
-            if (local.isNullOrEmpty()){
-                val surahSource = dataSource.surah()
-                localDataSource.insertAllSurah(surahSource.data)
-                localDataSource.getAllSurah()
-            }else{
-                localDataSource.getAllSurah()
-            }
-        }.map {
-            Mapper.mapResult(it) {
-                map { surah ->
-                    Mapper.mapApiToEntity(surah)
+        CoroutineScope(coroutineContext).launch {
+            fetch {
+                val local = localDataSource.getAllSurah()
+                if (local.isNullOrEmpty()){
+                    val surahSource = dataSource.surah()
+                    localDataSource.insertAllSurah(surahSource.data)
+                    localDataSource.getAllSurah()
+                }else{
+                    localDataSource.getAllSurah()
                 }
+            }.map {
+                Mapper.mapResult(it) {
+                    map { surah ->
+                        Mapper.mapApiToEntity(surah)
+                    }
+                }
+            }.collect {
+                _surah.value = it
             }
-        }.collect {
-            _surah.value = it
         }
     }
 

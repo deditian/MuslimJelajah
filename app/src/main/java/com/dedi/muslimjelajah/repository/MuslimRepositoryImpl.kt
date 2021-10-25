@@ -27,11 +27,8 @@ class MuslimRepositoryImpl @Inject constructor(
 
     override val surah: StateFlow<ResultState<List<Surah>>> = _surah
     override val ayah: StateFlow<ResultState<List<Ayah>>> = _ayah
-    private val coroutineContext: CoroutineContext
-        get() = Dispatchers.IO
 
     override suspend fun getSurah() {
-        CoroutineScope(coroutineContext).launch {
             fetch {
                 val local = localDataSource.getAllSurah()
                 if (local.isNullOrEmpty()){
@@ -50,7 +47,6 @@ class MuslimRepositoryImpl @Inject constructor(
             }.collect {
                 _surah.value = it
             }
-        }
     }
 
     override suspend fun getAyah(nomor: Int) {

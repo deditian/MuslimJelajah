@@ -3,17 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
     <item
         android:id="@+id/surah"
-        android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/surah"
-        android:iconTint="@color/purple_200"
-        tools:ignore="UnusedAttribute"/>
+        android:title="@string/surah"/>
 
     <item
         android:id="@+id/juz"
-        android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/juz"
-        android:iconTint="@color/purple_200"
-        tools:ignore="UnusedAttribute"/>
+        android:title="@string/juz"/>
 </menu>

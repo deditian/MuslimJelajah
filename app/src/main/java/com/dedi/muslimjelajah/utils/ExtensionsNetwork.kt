@@ -1,9 +1,12 @@
 package com.dedi.muslimjelajah.utils
 
 import com.dedi.muslimjelajah.domain.ResultState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import okhttp3.Dispatcher
 
 const val DATA_SURAH  = "MY_DATA"
 
@@ -14,7 +17,7 @@ suspend fun <T: Any> fetch(call: suspend () -> T): Flow<ResultState<T>> = flow {
     } catch (e: Throwable) {
         emit(ResultState.Error<T>(throwable = e))
     }
-}
+}.flowOn(Dispatchers.IO)
 
 fun <T: Any>ResultState<T>.getThrowableOrNull(): Throwable? {
     return if (this is ResultState.Error) {

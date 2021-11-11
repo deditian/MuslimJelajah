@@ -1,0 +1,172 @@
+{
+  "menu":[
+    {
+      "title": "Juz 1-10",
+      "type" : 0,
+      "item": [
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 1"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 2"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 3"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 4"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 5"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 6"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 7"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 8"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 9"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 10"
+        }
+      ]
+    },
+    {
+      "title" : "Juz 11-20",
+      "type" : 0,
+      "item": [
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 11"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 12"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 13"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 14"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 15"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 16"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 17"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 18"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 19"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 20"
+        }
+      ]
+    },
+    {
+      "title" : "Juz 21-30",
+      "type" : 0,
+      "item": [
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 21"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 22"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 23"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 24"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 25"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 26"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 27"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 28"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_1.jpg",
+          "title_menu": "Juz 29"
+        },
+        {
+          "type" : 1,
+          "image_menu": "pic_2.jpg",
+          "title_menu": "Juz 30"
+        }
+      ]
+    }
+  ]
+}

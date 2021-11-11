@@ -2,22 +2,68 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_graph.xml"
-    app:startDestination="@id/surah">
+    android:id="@+id/main_graph"
+    app:startDestination="@id/home">
 
 
     <fragment
-        android:id="@+id/surah"
-        android:name="com.dedi.muslimjelajah.view.fragment.surah.SurahFragment"
-        android:label="SurahFragment"
-        tools:layout="@layout/fragment_surah" />
+        android:id="@+id/home"
+        android:name="com.dedi.muslimjelajah.view.fragment.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/fragment_home" />
 
-    
     <fragment
-        android:id="@+id/juz"
-        android:name="com.dedi.muslimjelajah.view.fragment.juz.JuzFragment"
-        android:label="SurahFragment"
-        tools:layout="@layout/fragment_juz" />
+        android:id="@+id/bookmarks"
+        android:name="com.dedi.muslimjelajah.view.fragment.bookmarks.BookmarksFragment"
+        android:label="fragment_bookmarks"
+        tools:layout="@layout/fragment_bookmarks" />
+    <fragment
+        android:id="@+id/qiblatFragment"
+        android:name="com.dedi.muslimjelajah.view.fragment.qiblat.QiblatFragment"
+        android:label="fragment_qiblat"
+        tools:layout="@layout/fragment_qiblat" />
+    <action
+        android:id="@+id/action_global_qiblatFragment"
+        app:destination="@id/qiblatFragment" />
+
+    <fragment
+        android:id="@+id/juzFragment"
+        android:name="com.dedi.muslimjelajah.view.fragment.kitab.juz.JuzFragment"
+        android:label="fragment_juz"
+        tools:layout="@layout/fragment_juz">
+        <action
+            android:id="@+id/action_juzFragment_to_ayahActivity"
+            app:destination="@id/ayahActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/ayahActivity"
+        android:name="com.dedi.muslimjelajah.view.activity.ayah.AyahActivity"
+        android:label="fragment_ayah"
+        tools:layout="@layout/fragment_ayah" />
+    <fragment
+        android:id="@+id/surahFragment"
+        android:name="com.dedi.muslimjelajah.view.fragment.kitab.surah.SurahFragment"
+        android:label="fragment_surah"
+        tools:layout="@layout/fragment_surah">
+        <action
+            android:id="@+id/action_surahFragment3_to_ayahActivity"
+            app:destination="@id/ayahActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/kitabFragment"
+        android:name="com.dedi.muslimjelajah.view.fragment.kitab.KitabFragment"
+        android:label="KitabFragment"
+        tools:layout="@layout/fragment_kitab">
+        <action
+            android:id="@+id/action_kitabFragment_to_surahFragment"
+            app:destination="@id/surahFragment" />
+        <action
+            android:id="@+id/action_kitabFragment_to_juzFragment"
+            app:destination="@id/juzFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_kitabFragment"
+        app:destination="@id/kitabFragment" />
 
 
 </navigation>

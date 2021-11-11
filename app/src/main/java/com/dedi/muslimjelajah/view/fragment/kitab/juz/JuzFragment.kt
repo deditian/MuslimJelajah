@@ -1,15 +1,14 @@
-package com.dedi.muslimjelajah.view.fragment.juz
+package com.dedi.muslimjelajah.view.fragment.kitab.juz
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
-import android.widget.SimpleAdapter
 import com.dedi.muslimjelajah.R
 import com.dedi.muslimjelajah.databinding.FragmentJuzBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class JuzFragment : Fragment(R.layout.fragment_juz) {
 
     private val binding : FragmentJuzBinding by viewBinding()

@@ -1,4 +1,4 @@
-package com.dedi.muslimjelajah.view.fragment.surah
+package com.dedi.muslimjelajah.view.fragment.kitab.surah
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

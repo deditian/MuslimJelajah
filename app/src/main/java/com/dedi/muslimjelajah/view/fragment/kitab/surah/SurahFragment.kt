@@ -1,8 +1,7 @@
-package com.dedi.muslimjelajah.view.fragment.surah
+package com.dedi.muslimjelajah.view.fragment.kitab.surah
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.core.view.isVisible

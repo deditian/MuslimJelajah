@@ -1,4 +1,4 @@
-package com.dedi.muslimjelajah.view.fragment.juz
+package com.dedi.muslimjelajah.view.fragment.kitab.juz
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

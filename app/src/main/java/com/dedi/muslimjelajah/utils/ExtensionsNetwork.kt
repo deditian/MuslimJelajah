@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.flowOn
 import okhttp3.Dispatcher
 
 const val DATA_SURAH  = "MY_DATA"
+const val MENU_FILE  = "menu_resource.json"
 
 suspend fun <T: Any> fetch(call: suspend () -> T): Flow<ResultState<T>> = flow {
     emit(ResultState.Loading())
@@ -18,22 +19,6 @@ suspend fun <T: Any> fetch(call: suspend () -> T): Flow<ResultState<T>> = flow {
         emit(ResultState.Error<T>(throwable = e))
     }
 }.flowOn(Dispatchers.IO)
-
-fun <T: Any>ResultState<T>.getThrowableOrNull(): Throwable? {
-    return if (this is ResultState.Error) {
-        return this.throwable
-    } else {
-        null
-    }
-}
-
-fun <T: Any>ResultState<T>.getDataOrNull(): T? {
-    return if (this is ResultState.Success) {
-        return this.data
-    } else {
-        null
-    }
-}
 
 fun <T: Any>idle(): MutableStateFlow<ResultState<T>> = run {
     MutableStateFlow(ResultState.Idle())
@@ -48,17 +33,5 @@ fun <T: Any> ResultState<T>.onSuccess(result: (T) -> Unit) {
 fun <T: Any> ResultState<T>.onFailure(result: (Throwable) -> Unit) {
     if (this is ResultState.Error) {
         result.invoke(this.throwable)
-    }
-}
-
-fun <T: Any> ResultState<T>.onIdle(result: () -> Unit) {
-    if (this is ResultState.Idle) {
-        result.invoke()
-    }
-}
-
-fun <T: Any> ResultState<T>.onLoading(result: () -> Unit) {
-    if (this is ResultState.Loading) {
-        result.invoke()
     }
 }

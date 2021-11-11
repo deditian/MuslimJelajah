@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/surah"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/surah"/>
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
 
     <item
-        android:id="@+id/juz"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="@string/juz"/>
+        android:id="@+id/bookmarks"
+        android:icon="@drawable/ic_baseline_bookmark_24"
+        android:title="@string/bookmark"/>
 </menu>

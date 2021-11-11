@@ -1,13 +1,9 @@
-package com.dedi.muslimjelajah.view.fragment.surah
+package com.dedi.muslimjelajah.view.fragment.kitab.surah
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.dedi.muslimjelajah.repository.MuslimRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import org.json.JSONArray
-import org.json.JSONObject
 import javax.inject.Inject
 
 @HiltViewModel
